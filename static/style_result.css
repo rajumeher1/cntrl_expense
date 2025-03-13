@@ -13,7 +13,7 @@
   /* Position text in the top-left */
   .top-left-text {
     position: absolute;
-    top: 5mm; /* Adjust to match padding */
+    top: 1mm; /* Adjust to match padding */
     left: 5mm; /* Adjust to match padding */
     font-size: 12px; /* Adjust text size */
     font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
   /* Position text in the top-right */
   .top-right-text {
     position: absolute;
-    top: 8mm; /* Distance from the top */
+    top: 4mm; /* Distance from the top */
     right: 100mm; /* Distance from the right */
     font-size: 12px;
     font-family: Arial, sans-serif;
@@ -38,7 +38,7 @@
   /* Position value in the top-right */
   .top-right-value {
     position: absolute;
-    top: 8mm; /* Distance from the top */
+    top: 4mm; /* Distance from the top */
     right: 65mm; /* Distance from the right */
     font-size: 12px;
     font-family: Arial, sans-serif;
@@ -52,7 +52,7 @@
   /* Position text in the upper middle-right */
   .middle-upper-right {
     position: absolute;
-    top: 31mm; /* Adjust vertical position */
+    top: 27mm; /* Adjust vertical position */
     right: 65mm; /* Adjust horizontal position */
     font-size: 10px;
     font-family: Arial, sans-serif;
@@ -66,7 +66,7 @@
     width: 100%; /* Full width inside .a4-container */
     border-collapse: collapse; /* Merge border lines */
     position: absolute;
-    top: 34mm;
+    top: 31mm;
     bottom: 70mm; /* Adjust this value to move the table as needed */
     left: 0;
     right: 0;
@@ -115,7 +115,7 @@
   /* Style for the second table */
   .small-table {
     width: 270mm; /* Adjust width as needed */
-    margin-top: 124mm; /* Space below the first table */
+    margin-top: 121mm; /* Space below the first table */
     margin-left: 3.2mm;
     border-collapse: collapse;
     font-size: 12px;

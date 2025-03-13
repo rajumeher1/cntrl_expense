@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Report Form</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_table.css') }}">
+    <title>Responsive Expense Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_table.css') }}">
 </head>
 <body>
+
     <div id="header-container">
         <form id="headerForm">
             <div class="header-section">
-                <div>Expenditure Month: <strong style="font-size: 1.1em;">{{ month }} - {{ year }}</strong></div>
-                <div>Branch: <strong style="font-size: 1.1em;">{{ branch }}</strong></div>
-                <div>Sol ID: <strong style="font-size: 1.1em;">{{ sol_id }}</strong></div>
-                <div>Region: <strong style="font-size: 1.1em;">{{ region }}</strong></div>
-                <div>Date: <strong style="font-size: 1.1em;">{{ date }}</strong></div> 
-                <div>Place: <strong style="font-size: 1.1em;">{{ place }}</strong></div>                               
+                <div>Expenditure Month: <strong>{{ month }} - {{ year }}</strong></div>
+                <div>Branch: <strong>{{ branch }}</strong></div>
+                <div>Sol ID: <strong>{{ sol_id }}</strong></div>
+                <div>Region: <strong>{{ region }}</strong></div>
+                <div>Date: <strong>{{ date }}</strong></div> 
+                <div>Place: <strong>{{ place }}</strong></div>                               
             </div>
         </form>
     </div>
+
     <div id="table-container">
         <form method="POST" action="/generate">
             <table id="expenseTable">
                 <thead>
                     <tr>
-                        <th style="width: 2%;">P/L Code</th>
-                        <th style="width: 4%;">BACID</th>
-                        <th style="width: 10%;">Particulars</th>
-                        <th style="width: 4%;">Closing Balance Mar - {{ prev_to_prev_year }}</th>
-                        <th style="width: 4%;">Closing Balance Mar - {{ prev_year }}</th>
-                        <th style="width: 4%;">Opening Balance {{ month }} - {{ year }}</th>
-                        <th style="width: 4%;">Closing Balance {{ month }} - {{ year }}</th>
-                        <th style="width: 3%;">% Increase / Decrease</th>
-                        <th style="width: 15%;">Justification if Increase is more than 10%</th>
+                        <th>P/L Code</th>
+                        <th>BACID</th>
+                        <th>Particulars</th>
+                        <th>Closing Balance Mar - {{ prev_to_prev_year }}</th>
+                        <th>Closing Balance Mar - {{ prev_year }}</th>
+                        <th>Opening Balance {{ month }} - {{ year }}</th>
+                        <th>Closing Balance {{ month }} - {{ year }}</th>
+                        <th>% Increase / Decrease</th>
+                        <th>Justification</th>
                     </tr>
                     <input type="hidden" name="region" value="{{ region }}">
                     <input type="hidden" name="month" value="{{ month }}">
@@ -42,92 +44,63 @@
                     <input type="hidden" name="prev_to_prev_year" value="{{ prev_to_prev_year }}">
                     <input type="hidden" name="prev_year" value="{{ prev_year }}">
                     <input type="hidden" name="place" value="{{ place }}">          
+
                 </thead>
                 <tbody>
                     {% for code, bacid in bacid_data.items() %}
                     <tr>
-                        <td>{{ code }}</td>
-                        <td class="bacid">{{ bacid }}</td>
-                        <td>
-                            {% if code == '1640' %}
-                                SUNDRY CHARGES OTHERS
-                            {% elif code == '1610' %}
-                                REPAIRS AND MAINTENANCE OTHERS
-                            {% elif code == '1460' %}
-                                PRINTING AND STATIONERY
-                            {% elif code == '1650' %}
-                                COMPUTER RELATED CHARGES A/C
-                            {% elif code == '1660' %}
-                                TRAVELLING EXPENSES - OTHERS
-                            {% elif code == '1630' %}
-                                ENTERTAINMENT EXP
-                            {% elif code == '1430' %}
-                                LIGHTING OFFICE
-                            {% elif code == '1550' %}
-                                POSTAGES
-                            {% elif code == '1580' %}
-                                TELEPHONES OFFICE
+                        <td data-label="P/L Code">{{ code }}</td>
+                        <td data-label="BACID">{{ bacid }}</td>
+                        <td data-label="Particulars">
+                            {% if code == '1640' %} SUNDRY CHARGES OTHERS
+                            {% elif code == '1610' %} REPAIRS AND MAINTENANCE OTHERS
+                            {% elif code == '1460' %} PRINTING AND STATIONERY
+                            {% elif code == '1650' %} COMPUTER RELATED CHARGES A/C
+                            {% elif code == '1660' %} TRAVELLING EXPENSES - OTHERS
+                            {% elif code == '1630' %} ENTERTAINMENT EXP
+                            {% elif code == '1430' %} LIGHTING OFFICE
+                            {% elif code == '1550' %} POSTAGES
+                            {% elif code == '1580' %} TELEPHONES OFFICE
                             {% endif %}
                         </td>
-                        <!-- User Input Fields -->
-                        <td><input type="number" step="any" name="{{ code }}_cb_prev_to_prev_year" required="required"></td>
-                        <td><input type="number" step="any" name="{{ code }}_cb_prev_year" required="required" oninput="updatePercentage('{{ code }}')"></td>
-                        <td><input type="number" step="any" name="{{ code }}_ob_cur_month" required="required" oninput="updatePercentage('{{ code }}')"></td>
-                        <td><input type="number" step="any" name="{{ code }}_cb_cur_month" required="required" oninput="updatePercentage('{{ code }}')"></td>
-    
-                        <!-- % Increase / Decrease -->
-                        <td id="{{ code }}_percentage"></td>
-    
-                        <!-- Justification Field (Enabled if Percentage Increase > 10%) -->
-                        <td><input type="text" name="{{ code }}_justification" value="" disabled></td>
-                    
-                        <!-- Hidden Fields to Store Calculated Data -->
-                        <input type="hidden" name="{{ code }}_percentage_value" id="{{ code }}_percentage_value">
-                        <input type="hidden" name="{{ code }}_justification_value" id="{{ code }}_justification_value">
+                        <td data-label="Closing Balance Mar - {{ prev_to_prev_year }}"><input type="number" step="any" name="{{ code }}_cb_prev_to_prev_year" required></td>
+                        <td data-label="Closing Balance Mar - {{ prev_year }}"><input type="number" step="any" name="{{ code }}_cb_prev_year" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="Opening Balance {{ month }} - {{ year }}"><input type="number" step="any" name="{{ code }}_ob_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="Closing Balance {{ month }} - {{ year }}"><input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="% Increase / Decrease" id="{{ code }}_percentage"></td>
+                        <td data-label="Justification"><input type="text" name="{{ code }}_justification" value="" disabled></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-    
-            <!-- Submit Button -->
             <input type="submit" value="Generate">
         </form>
     </div>
-    
+
     <script>
         function updatePercentage(code) {
-            const openingBalanceInput = document.querySelector(`input[name="${code}_ob_cur_month"]`);
-            const closingBalanceInput = document.querySelector(`input[name="${code}_cb_cur_month"]`);
-            const prevYearClosingBalanceInput = document.querySelector(`input[name="${code}_cb_prev_year"]`);
+            const ob = document.querySelector(`input[name="${code}_ob_cur_month"]`);
+            const cb = document.querySelector(`input[name="${code}_cb_cur_month"]`);
+            const prevYearCB = document.querySelector(`input[name="${code}_cb_prev_year"]`);
             const percentageCell = document.getElementById(`${code}_percentage`);
             const justificationInput = document.querySelector(`input[name="${code}_justification"]`);
-    
-            if (!openingBalanceInput || !closingBalanceInput || !prevYearClosingBalanceInput || !percentageCell || !justificationInput) {
-                console.error(`Input or cell not found for code: ${code}`);
-                return; // Exit if elements are not found
-            }
-    
-            const openingBalance = parseFloat(openingBalanceInput.value) || 0;
-            const closingBalance = parseFloat(closingBalanceInput.value) || 0;
-            const prevYearClosingBalance = parseFloat(prevYearClosingBalanceInput.value) || 0;
-            const prevYearMarchAverage = prevYearClosingBalance / 12;
-    
+
+            if (!ob || !cb || !prevYearCB || !percentageCell || !justificationInput) return;
+
+            const obVal = parseFloat(ob.value) || 0;
+            const cbVal = parseFloat(cb.value) || 0;
+            const prevCBVal = parseFloat(prevYearCB.value) || 0;
+            const prevAvg = prevCBVal / 12;
             let percentageChange = 0;
-            if (prevYearMarchAverage !== 0) {
-                percentageChange = (((closingBalance - openingBalance) - prevYearMarchAverage) / prevYearMarchAverage) * 100;
+
+            if (prevAvg !== 0) {
+                percentageChange = (((cbVal - obVal) - prevAvg) / prevAvg) * 100;
                 percentageCell.textContent = percentageChange.toFixed(2) + "%";
             } else {
-                percentageCell.textContent = "N/A"; // Display "N/A" if denominator is zero
+                percentageCell.textContent = "N/A";
             }
-    
-            // Update justification logic
-            const percentageChangeValue = percentageChange;
-    
-            // Set Hidden Fields for Percentage and Justification
-            document.getElementById(`${code}_percentage_value`).value = percentageChange.toFixed(2);
-            document.getElementById(`${code}_justification_value`).value = justificationInput.value;
-    
-            if (!isNaN(percentageChangeValue) && percentageChangeValue > 10) {
+
+            if (percentageChange > 10) {
                 percentageCell.style.backgroundColor = "#E97451";
                 justificationInput.disabled = false;
                 justificationInput.required = true;
@@ -140,6 +113,6 @@
             }
         }
     </script>
-    
+
 </body>
 </html>
