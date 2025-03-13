@@ -62,10 +62,10 @@ def index():
 
     return render_template("index.html")
 
-@app.route("/generate", methods=["POST"])
-def calculate_data():
+@app.route("/table", methods=["GET", "POST"])
+def table():
 
-    month = request.form['month']
+    month = request.form.get('month')
   
     data = request.form.to_dict()
     
