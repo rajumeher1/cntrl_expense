@@ -29,10 +29,10 @@
                         <th>P/L Code</th>
                         <th>BACID</th>
                         <th>Particulars</th>
-                        <th>Closing Balance Mar - {{ month }}</th>
+                        <th>Closing Balance Mar - {{ prev_to_prev_year }}</th>
                         <th>Closing Balance Mar - {{ prev_year }}</th>
-                        <th>Opening Balance {{ month }} - {{ year }}</th>
-                        <th>Closing Balance {{ month }} - {{ year }}</th>
+                        <th>Opening Balance {{ month_text_short }} - {{ year_sort }}</th>
+                        <th>Closing Balance {{ month_text_short }} - {{ year_sort }}</th>
                         <th>% Increase / Decrease</th>
                         <th>Justification</th>
                     </tr>
@@ -65,8 +65,8 @@
                         </td>
                         <td data-label="Closing Balance Mar - {{ prev_to_prev_year }}"><input type="number" step="any" name="{{ code }}_cb_prev_to_prev_year" required></td>
                         <td data-label="Closing Balance Mar - {{ prev_year }}"><input type="number" step="any" name="{{ code }}_cb_prev_year" required oninput="updatePercentage('{{ code }}')"></td>
-                        <td data-label="Opening Balance {{ month }} - {{ year }}"><input type="number" step="any" name="{{ code }}_ob_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
-                        <td data-label="Closing Balance {{ month }} - {{ year }}"><input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="Opening Balance {{ month_text_short }} - {{ year_sort }}"><input type="number" step="any" name="{{ code }}_ob_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="Closing Balance {{ month_text_short }} - {{ year_sort }}"><input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
                         <td data-label="% Increase / Decrease" id="{{ code }}_percentage"></td>
                         <td data-label="Justification"><input type="text" name="{{ code }}_justification" value="" disabled></td>
                     </tr>

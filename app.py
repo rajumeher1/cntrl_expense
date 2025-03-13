@@ -23,13 +23,15 @@ def index():
         date = datetime.strptime(request.form['date'], '%Y-%m-%d').strftime('%d-%m-%Y')
         place = request.form["place"]
         month_text = month_names[month]
+        month_text_short = month_text[:3]
+        year_sort = year % 100
 
         if int(month) >= 4:
-            prev_year = year
-            prev_to_prev_year = year - 1
+            prev_year = year_sort
+            prev_to_prev_year = year_sort - 1
         else:
-            prev_year = year - 1
-            prev_to_prev_year = year - 2
+            prev_year = year_sort - 1
+            prev_to_prev_year = year_sort - 2
 
         # Define BACID data
         bacid_data = {
@@ -55,7 +57,8 @@ def index():
         return render_template("table.html", date=date, sol_id=sol_id, branch=branch,
                                region=region, place=place, month=month_text, year=year,
                                prev_year=prev_year, prev_to_prev_year=prev_to_prev_year,
-                               bacid_data=modified_bacid_data)
+                               bacid_data=modified_bacid_data, month_text_short=month_text_short,
+                               year_sort =year_sort)
 
     return render_template("index.html")
 
