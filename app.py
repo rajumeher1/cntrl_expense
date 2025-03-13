@@ -13,6 +13,7 @@ def index():
         "12": "December"
     }
 
+
     if request.method == "POST":
         sol_id = request.form["sol"]
         branch = request.form["branch"]
