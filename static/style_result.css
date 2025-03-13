@@ -1,0 +1,162 @@
+/* A4 Landscape Size with Thin Border */
+.a4-container {
+    width: 297mm;
+    height: 190mm;
+    margin: auto;
+    padding: 10mm; /* Equal margin inside the border */
+    background: white;
+    position: relative;
+    border: 0.5mm solid black; /* Thin border */
+    box-sizing: border-box; /* Keeps border inside dimensions */
+  }
+  
+  /* Position text in the top-left */
+  .top-left-text {
+    position: absolute;
+    top: 5mm; /* Adjust to match padding */
+    left: 5mm; /* Adjust to match padding */
+    font-size: 12px; /* Adjust text size */
+    font-family: Arial, sans-serif;
+    line-height: 0.6;
+    white-space: pre-line; /* Ensures line breaks */
+  }
+  
+  /* Position text in the top-right */
+  .top-right-text {
+    position: absolute;
+    top: 8mm; /* Distance from the top */
+    right: 100mm; /* Distance from the right */
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    line-height: 0.6;
+    white-space: pre-line;
+    text-align: right; /* Align text to the left */
+    width: max-content; /* Keep width based on content */
+    transform: translateX(50%); /* Adjust for centering effect */
+  }
+  
+  /* Position value in the top-right */
+  .top-right-value {
+    position: absolute;
+    top: 8mm; /* Distance from the top */
+    right: 65mm; /* Distance from the right */
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    line-height: 0.6;
+    white-space: pre-line;
+    text-align: left; /* Align text to the left */
+    width: max-content; /* Keep width based on content */
+    transform: translateX(50%); /* Adjust for centering effect */
+  }
+  
+  /* Position text in the upper middle-right */
+  .middle-upper-right {
+    position: absolute;
+    top: 31mm; /* Adjust vertical position */
+    right: 65mm; /* Adjust horizontal position */
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    /* font-weight: bold; */
+    text-align: right;
+    white-space: nowrap; /* Keep text in one line */
+  }
+  
+  /* Table Styling */
+  .aligned-table {
+    width: 100%; /* Full width inside .a4-container */
+    border-collapse: collapse; /* Merge border lines */
+    position: absolute;
+    top: 34mm;
+    bottom: 70mm; /* Adjust this value to move the table as needed */
+    left: 0;
+    right: 0;
+  }
+  
+  /* Table Borders */
+  .aligned-table th, 
+  .aligned-table td {
+    border: 0.5mm solid black; /* Same as container */
+    padding: 3mm; /* Adjust for spacing */
+    text-align: center;
+  }
+  
+  /* Ensure first and last columns align with container */
+  .aligned-table th:first-child, 
+  .aligned-table td:first-child {
+    border-left: 0mm solid black;
+  }
+  
+  .aligned-table th:last-child, 
+  .aligned-table td:last-child {
+    border-right: 0mm solid black;
+  }
+  
+  /* Header Row - Auto Adjust Height */
+  .aligned-table th {
+    height: auto; /* Adjusts automatically based on text */
+    white-space: normal; /* Allows text to wrap */
+    word-wrap: break-word;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+  }
+  
+  /* Other Rows - Fixed Height */
+  .aligned-table td {
+    height: 5.5mm;  /* Your desired height */
+    line-height: 2mm;  /* Match line-height with height */
+    padding: 0;  /* Remove padding */
+    overflow: hidden;  /* Hide any excess content */
+    white-space: nowrap; /* Prevent text wrapping */
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+  
+  /* Style for the second table */
+  .small-table {
+    width: 270mm; /* Adjust width as needed */
+    margin-top: 124mm; /* Space below the first table */
+    margin-left: 3.2mm;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .small-table td {
+    border: 0.5mm solid black; /* Thin border */
+    padding: 1mm; /* Adjust padding */
+    text-align: left;
+    line-height: 3mm;
+  }
+  
+  .small-table td:first-child {
+    width: 40mm; /* Adjust width of first column */
+    font-size: 11px;
+  }
+  
+  /* Position value in the bottom-left */
+  .bottom-left {
+    position: absolute;
+    bottom: 5mm;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    line-height: 0.6;
+    white-space: pre-line;
+    text-align: left;
+    width: max-content;
+    transform: translateX(50%);
+  }
+  
+  /* Position value in the bottom-right */
+  .bottom-right {
+    position: absolute;
+    bottom: 5mm;
+    right: 60mm;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    line-height: 0.6;
+    white-space: pre-line;
+    text-align: left;
+    width: max-content;
+    transform: translateX(50%);
+  }

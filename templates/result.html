@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_result.css') }}">
+</head>
+<body>
+    <div class="a4-container">
+        <!-- Top Left Text -->
+        <div class="top-left-text">
+            क्षेत्र प्रबंधक / The Regional Head<br>
+            बैंक ऑफ बड़ौदा / Bank of Baroda<br>
+            {{ data['region'] }} क्षेत्र / {{ data['region'] }} Region<br><br>
+
+            माननीय महोदय / Dear Sir,<br>
+            &nbsp;&nbsp;विषय: माह  <span style="font-size: 15px;">"{{ data['month'][:3] }}-{{ data['year'] }}" </span> हेतु लाभ एवं हानि खातों के तहत नियंत्रणीय व्यय का विवरण <br>
+            &nbsp;&nbsp;Re: Statement of Controllable Expenses under Profit and Loss Accounts for the Month of <span style="font-size: 15px;"> "{{ data['month'][:3] }}-{{ data['year'] }}" </span>
+        </div>
+
+        <!-- Top Right Text -->
+        <div class="top-right-text">
+            शाखा का नाम / Branch Name :<br>
+            तारीख / Date :
+        </div>
+
+        <!-- Top Right Value -->
+        <div class="top-right-value">
+            {{ data['branch'] }}<br>
+            {{ data['date'] }}
+        </div>
+
+        <!-- Middle Upper Right Text -->
+        <div class="middle-upper-right">
+            ₹ लाख में / ₹ In Lakhs
+        </div>
+        <!-- Table -->
+        <table class="aligned-table">
+            <thead>
+                <tr>
+                    <td style="font-size: 10px;">A</td>
+                    <td style="font-size: 10px;">B</td>
+                    <td style="font-size: 10px;">C</td>
+                    <td style="font-size: 10px;">D</td>
+                    <td style="font-size: 10px;">E</td>
+                    <td style="font-size: 10px;">F</td>
+                    <td style="font-size: 10px;">G</td>
+                    <td style="font-size: 10px;">H</td>
+                    <td style="font-size: 10px;">I</td>
+                    <td style="font-size: 10px;">J</td>
+                    <td style="font-size: 10px;">K</td>
+                </tr>
+                <tr>
+                    <th>क्रम सं. S.No.</th>
+                    <th>विवरण / Particulars</th>
+                    <th>पी एल कोड<br>PL CODE</th>
+                    <th>मार्च-{{ data['prev_to_prev_year'][-2:] }} तक बकाया Mar-{{ data['prev_to_prev_year'][-2:] }} Outstanding (Full Year)</th>
+                    <th>मार्च-{{ data['prev_year'][-2:] }} तक बकाया Mar-{{ data['prev_year'][-2:] }} Outstanding (Full Year)</th>
+                    <th>मार्च-{{ data['prev_year'][-2:] }} तक मासिक औसत Monthly Average up to Mar-{{ data['prev_year'][-2:] }} (E/12)</th>
+                    <th>चालू माह {{ data['month'][:3] }}-{{ data['year'][-2:] }} का व्यय Expenditure of Current Month {{ data['month'][:3] }}-{{ data['year'][-2:] }}</th>
+                    <th>कॉलम 'F' की तुलना में कॉलम 'G' में % में वृद्धि/कमी Increase / Decrease in % in Column 'G' over Column 'F'</th>
+                    <th>अप्रैल-{{ data['prev_year'][-2:] }} से पिछली माह तक संचयी Cumulative from Apr-{{ data['prev_year'][-2:] }} till Previous Month</th>
+                    <th>अप्रैल-{{ data['prev_year'][-2:] }} से चालू माह तक संचयी Cumulative from Apr-{{ data['prev_year'][-2:] }} to current Month</th>
+                    <th>संचयी का मासिक औसत Monthly Average of cumulative (J/No.of Month)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for code, result in calculated_data.items() %}
+                <tr>
+                    <td>{{ result.number }}</td>
+                    <td style="text-align: left;">{{ result.name }}</td>
+                    <td>{{ code }}</td>
+                    <td>{{ result.prev_to_prev_yr_os }}</td>
+                    <td>{{ result.prev_yr_os }}</td>
+                    <td>{{ result.prev_yr_avg }}</td>
+                    <td>{{ result.curr_mon_expense }}</td>
+                    <td>{{ result.percentage_change }}</td>
+                    <td>{{ result.cum_till_prev_month }}</td>
+                    <td>{{ result.cum_till_cur_month }}</td>
+                    <td>{{ result.cumm_avg }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Second Table -->
+        <table class="small-table">
+            <tr>
+                <td colspan="2">नोट: यदि कॉलम 'G' में 10% से अधिक वृद्धि हो तो कृपया आगामी कार्यवाही से बचने के लिए हेतु कारण बताए<br>
+                    Note: If % increase in Column 'G' is more than 10% please give reasons to avoid further correspondence.</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 12px;">Justification</td>
+                <!-- <td>{{ 'X' }}</td> -->
+                <td>{{ justification }}</td>
+            </tr>
+        </table>
+
+        <!-- Bottom Left Text -->
+        <div class="bottom-left">
+            Place: {{ data['place'] }}<br>
+        </div>
+
+        <!-- Bottom RIght Text -->
+        <div class="bottom-right">
+            Branch Head
+        </div>
+
+    </div>
+</body>
+</html>
