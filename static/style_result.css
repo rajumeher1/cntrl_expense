@@ -65,7 +65,7 @@
   .aligned-table {
     width: 100%; /* Full width inside .a4-container */
     border-collapse: collapse; /* Merge border lines */
-    position: absolute;
+    position: absolute; 
     top: 31mm;
     bottom: 70mm; /* Adjust this value to move the table as needed */
     left: 0;
@@ -114,19 +114,18 @@
   
   /* Style for the second table */
   .small-table {
-    width: 270mm; /* Adjust width as needed */
-    margin-top: 121mm; /* Space below the first table */
-    margin-left: 3.2mm;
+    width: 95%;
     border-collapse: collapse;
-    font-size: 12px;
-    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 132mm;
+    left: 13.5mm;
   }
   
   .small-table td {
     border: 0.5mm solid black; /* Thin border */
     padding: 1mm; /* Adjust padding */
     text-align: left;
-    line-height: 3mm;
+    font-size: 10px;
   }
   
   .small-table td:first-child {
@@ -137,10 +136,10 @@
   /* Position value in the bottom-left */
   .bottom-left {
     position: absolute;
-    bottom: 5mm;
+    bottom: 1%;
     font-size: 12px;
     font-family: Arial, sans-serif;
-    line-height: 0.6;
+    line-height: 0.1;
     white-space: pre-line;
     text-align: left;
     width: max-content;
@@ -150,7 +149,7 @@
   /* Position value in the bottom-right */
   .bottom-right {
     position: absolute;
-    bottom: 5mm;
+    bottom: 0.5%;
     right: 60mm;
     font-size: 12px;
     font-family: Arial, sans-serif;
@@ -160,3 +159,51 @@
     width: max-content;
     transform: translateX(50%);
   }
+.print-button {
+  position: absolute;
+  left: 50%;
+  padding: 5px;
+}
+
+/* Style the Button */
+.print-button button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Hover Effect */
+.print-button button:hover {
+  background-color: blue;
+}
+
+@media print {
+  body * {
+      visibility: hidden; /* Hide everything by default */
+  }
+  .a4-container, .a4-container * {
+      visibility: visible; /* Show only the printable area */
+  }
+  .a4-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+  }
+
+  .small-table {
+    width: 95%;
+    border-collapse: collapse;
+    position: absolute;
+    top: 139mm;
+  }
+
+  .small-table td {
+    border-right: 0mm;
+  }
+}
+
