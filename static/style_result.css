@@ -39,7 +39,7 @@
   .top-right-value {
     position: absolute;
     top: 4mm; /* Distance from the top */
-    right: 65mm; /* Distance from the right */
+    right: 70mm; /* Distance from the right */
     font-size: 12px;
     font-family: Arial, sans-serif;
     line-height: 0.6;
