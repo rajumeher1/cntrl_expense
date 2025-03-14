@@ -98,6 +98,7 @@ select option:hover, select option:focus {
     }
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 5px;
     }
     .button-container {
         grid-column: 1;
