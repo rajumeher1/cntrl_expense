@@ -125,7 +125,8 @@
     border: 0.5mm solid black; /* Thin border */
     padding: 1mm; /* Adjust padding */
     text-align: left;
-    font-size: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
   }
   
   .small-table td:first-child {
@@ -182,28 +183,8 @@
 }
 
 @media print {
-  body * {
-      visibility: hidden; /* Hide everything by default */
-  }
-  .a4-container, .a4-container * {
-      visibility: visible; /* Show only the printable area */
-  }
-  .a4-container {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-  }
-
-  .small-table {
-    width: 95%;
-    border-collapse: collapse;
-    position: absolute;
-    top: 139mm;
-  }
-
-  .small-table td {
-    border-right: 0mm;
+  .print-button {
+    display: none;
   }
 }
 
