@@ -183,16 +183,6 @@
 }
 
 @media print {
-  @page {
-    size: A4 landscape;
-  }
-  body {
-    transform: rotate(90deg);
-    transform-origin: left top;
-    width: 297;
-    height: 210;
-    overflow: hidden;
-  }
   .print-button {
     display: none;
   }
