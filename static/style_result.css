@@ -183,6 +183,10 @@
 }
 
 @media print {
+  body {
+    width: 297;
+    height: 210;
+  }
   .print-button {
     display: none;
   }
