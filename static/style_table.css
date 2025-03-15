@@ -9,7 +9,7 @@ table {
 @media (min-width: 768px) {
   th:nth-child(1), td:nth-child(1) { width: 2%; }  /* First Column */
   th:nth-child(2), td:nth-child(2) { width: 4%; } /* Second Column */
-  th:nth-child(3), td:nth-child(3) { width: 10%; } /* Third Column */
+  th:nth-child(3), td:nth-child(3) { width: 8%; } /* Third Column */
   th:nth-child(4), td:nth-child(4) { width: 4%; } /* Fourth Column */
   th:nth-child(5), td:nth-child(5) { width: 4%; } /* Fifth Column */
   th:nth-child(6), td:nth-child(6) { width: 4%; } /* Sixth Column */
@@ -33,11 +33,11 @@ th {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  /* margin-right: 300px; */
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 5px;
+  flex-wrap: wrap;
 }
 
 .header-section div {
