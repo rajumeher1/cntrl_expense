@@ -15,7 +15,7 @@
   .top-left-text {
     position: absolute;
     top: 1mm; /* Adjust to match padding */
-    left: 5mm; /* Adjust to match padding */
+    left: 2mm; /* Adjust to match padding */
     font-size: 12px; /* Adjust text size */
     font-family: Arial, sans-serif;
     line-height: 0.6;
@@ -118,7 +118,7 @@
     width: 95.4%;
     border-collapse: collapse;
     position: absolute;
-    top: 135mm;
+    top: 131mm;
     left: 13.6mm;
   }
   

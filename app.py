@@ -62,7 +62,7 @@ def index():
 
     return render_template("index.html")
 
-@app.route("/table", methods=["GET", "POST"])
+@app.route("/statement", methods=["GET", "POST"])
 def table():
 
     month = request.form.get('month')

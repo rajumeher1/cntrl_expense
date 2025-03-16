@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Statement</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_result.css') }}">
 
 </head>
@@ -57,8 +57,8 @@
                     <th>क्रम सं. S.No.</th>
                     <th>विवरण / Particulars</th>
                     <th>पी एल कोड<br>PL CODE</th>
-                    <th>मार्च-{{ data['prev_to_prev_year'][-2:] }} तक बकाया Mar-{{ data['prev_to_prev_year'][-2:] }} Outstanding (Full Year)</th>
-                    <th>मार्च-{{ data['prev_year'][-2:] }} तक बकाया Mar-{{ data['prev_year'][-2:] }} Outstanding (Full Year)</th>
+                    <th>मार्च-{{ data['prev_to_prev_year'][-2:] }} तक बकाया <br> Mar-{{ data['prev_to_prev_year'][-2:] }} Outstanding (Full Year)</th>
+                    <th>मार्च-{{ data['prev_year'][-2:] }} तक बकाया <br> Mar-{{ data['prev_year'][-2:] }} Outstanding (Full Year)</th>
                     <th>मार्च-{{ data['prev_year'][-2:] }} तक मासिक औसत Monthly Average up to Mar-{{ data['prev_year'][-2:] }} (E/12)</th>
                     <th>चालू माह {{ data['month'][:3] }}-{{ data['year'][-2:] }} का व्यय Expenditure of Current Month {{ data['month'][:3] }}-{{ data['year'][-2:] }}</th>
                     <th>कॉलम 'F' की तुलना में कॉलम 'G' में % में वृद्धि/कमी Increase / Decrease in % in Column 'G' over Column 'F'</th>

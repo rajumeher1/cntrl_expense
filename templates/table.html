@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Expense Table</title>
+    <title>Expenditure Table</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_table.css') }}">
 </head>
 <body>
@@ -22,7 +22,7 @@
     </div>
 
     <div id="table-container">
-        <form method="POST" action="/table">
+        <form method="POST" action="/statement">
             <table id="expenseTable">
                 <thead>
                     <tr>
