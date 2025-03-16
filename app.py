@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, make_response
+from flask import Flask, render_template, request
 from datetime import datetime, timedelta
 from calculation import calculate
 
