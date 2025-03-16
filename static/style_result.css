@@ -118,7 +118,7 @@
     width: 95.4%;
     border-collapse: collapse;
     position: absolute;
-    top: 131mm;
+    top: 134mm;
     left: 13.6mm;
   }
   
@@ -187,5 +187,6 @@
   .print-button {
     display: none;
   }
+
 }
 
