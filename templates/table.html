@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expenditure Table</title>
+    <title>Data Entry Table</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_table.css') }}">
 </head>
 <body>
@@ -29,10 +29,10 @@
                         <th>P/L Code</th>
                         <th>BACID</th>
                         <th>Particulars</th>
-                        <th>Closing Balance Mar - {{ prev_to_prev_year }}</th>
-                        <th>Closing Balance Mar - {{ prev_year }}</th>
-                        <th>Opening Balance {{ month_text_short }} - {{ year_sort }}</th>
-                        <th>Closing Balance {{ month_text_short }} - {{ year_sort }}</th>
+                        <th>Closing Balance<br>as on<br>31 - Mar - {{ prev_to_prev_year }}</th>
+                        <th>Closing Balance<br>as on<br>31 - Mar - {{ prev_year }}</th>
+                        <th>Opening Balance<br>as on<br>{{ first_day_of_month }}</th>
+                        <th>Closing Balance<br>as on<br>{{ last_day_of_month }}</th>
                         <th>% Increase / Decrease</th>
                         <th>Justification</th>
                     </tr>

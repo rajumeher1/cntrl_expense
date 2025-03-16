@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, make_response
-from datetime import datetime
+from datetime import datetime, timedelta
 from calculation import calculate
 
 app = Flask(__name__)
@@ -8,9 +8,9 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     month_names = {
-        "1": "January", "2": "February", "3": "March", "4": "April", "5": "May", "6": "June",
-        "7": "July", "8": "August", "9": "September", "10": "October", "11": "November",
-        "12": "December"
+        1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
+        7: "July", 8: "August", 9: "September", 10: "October", 11: "November",
+        12: "December"
     }
 
 
@@ -18,20 +18,21 @@ def index():
         sol_id = request.form["sol"]
         branch = request.form["branch"]
         region = request.form['region']
-        month = request.form["month"]
+        month = int(request.form["month"])
         year = int(request.form["year"])
         date = datetime.strptime(request.form['date'], '%Y-%m-%d').strftime('%d-%m-%Y')
+        first_day_of_month = datetime(year, month, 1).strftime("%d - %b - %Y")
+        last_day_of_month = (datetime(year, month+1, 1) - timedelta(days=1)).strftime("%d - %b - %Y")
         place = request.form["place"]
         month_text = month_names[month]
-        month_text_short = month_text[:3]
-        year_sort = year % 100
+
 
         if int(month) >= 4:
-            prev_year = year_sort
-            prev_to_prev_year = year_sort - 1
+            prev_year = year
+            prev_to_prev_year = year - 1
         else:
-            prev_year = year_sort - 1
-            prev_to_prev_year = year_sort - 2
+            prev_year = year - 1
+            prev_to_prev_year = year - 2
 
         # Define BACID data
         bacid_data = {
@@ -57,8 +58,8 @@ def index():
         return render_template("table.html", date=date, sol_id=sol_id, branch=branch,
                                region=region, place=place, month=month_text, year=year,
                                prev_year=prev_year, prev_to_prev_year=prev_to_prev_year,
-                               bacid_data=modified_bacid_data, month_text_short=month_text_short,
-                               year_sort =year_sort)
+                               bacid_data=modified_bacid_data, first_day_of_month=first_day_of_month,
+                               last_day_of_month=last_day_of_month)
 
     return render_template("index.html")
 
