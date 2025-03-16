@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, url_for, make_response
 from datetime import datetime
 from calculation import calculate
 
@@ -75,6 +75,7 @@ def table():
 
     return render_template("result.html", data=data, calculated_data=results,
                            justification=justification)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

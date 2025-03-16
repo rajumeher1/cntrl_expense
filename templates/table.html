@@ -97,7 +97,7 @@
                 percentageChange = (((cbVal - obVal) - prevAvg) / prevAvg) * 100;
                 percentageCell.textContent = percentageChange.toFixed(2) + "%";
             } else {
-                percentageCell.textContent = "N/A";
+                percentageCell.textContent = 0;
             }
 
             if (percentageChange > 10) {

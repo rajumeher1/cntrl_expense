@@ -1,12 +1,13 @@
 /* A4 Landscape Size with Thin Border */
 .a4-container {
-    width: 297mm;
+    width: 290mm;
     height: 190mm;
     margin: auto;
     padding: 10mm; /* Equal margin inside the border */
     background: white;
     position: relative;
     border: 0.5mm solid black; /* Thin border */
+    border-right: 0.53mm solid black;
     box-sizing: border-box; /* Keeps border inside dimensions */
   }
   
@@ -67,7 +68,7 @@
     border-collapse: collapse; /* Merge border lines */
     position: absolute; 
     top: 31mm;
-    bottom: 70mm; /* Adjust this value to move the table as needed */
+    bottom: auto; /* Adjust this value to move the table as needed */
     left: 0;
     right: 0;
   }
@@ -114,10 +115,10 @@
   
   /* Style for the second table */
   .small-table {
-    width: 95%;
+    width: 95.4%;
     border-collapse: collapse;
     position: absolute;
-    top: 132mm;
+    top: 135mm;
     left: 13.5mm;
   }
   
