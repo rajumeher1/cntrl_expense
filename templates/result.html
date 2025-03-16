@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_result.css') }}">
+
 </head>
 </head>
 <body>
-    <div class="a4-container">
+    <div class="a4-container" id="mydiv">
         <!-- Top Left Text -->
         <div class="top-left-text">
             क्षेत्र प्रबंधक / The Regional Head<br>
@@ -111,7 +112,7 @@
     </div>
     <div class="print-button">
         <button onclick="window.print()">Print</button>
+        <!-- <button onclick="download()">Download PDF</button> -->
     </div>
-    
 </body>
 </html>
