@@ -44,11 +44,12 @@
 
             <div class="form-group">
                 <label for="sol">Sol ID:</label>
-                <input type="number" name="sol" required>
+                <input type="text" name="sol" id="sol" required minlength="4" maxlength="4"
+                pattern="\d{4}" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 4)">
             </div>
 
             <div class="form-group">
-                <label for="branch">Branch:</label>
+                <label for="branch">Branch Name:</label>
                 <input type="text" name="branch" required>
             </div>
 
