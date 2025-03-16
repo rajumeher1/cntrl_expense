@@ -15,14 +15,14 @@ def index():
 
 
     if request.method == "POST":
-        sol_id = request.form["sol"]
+        sol_id = request.form["sol"].zfill(4)
         branch = request.form["branch"]
         region = request.form['region']
         month = int(request.form["month"])
         year = int(request.form["year"])
-        date = datetime.strptime(request.form['date'], '%Y-%m-%d').strftime('%d-%m-%Y')
-        first_day_of_month = datetime(year, month, 1).strftime("%d - %b - %Y")
-        last_day_of_month = (datetime(year, month+1, 1) - timedelta(days=1)).strftime("%d - %b - %Y")
+        date = datetime.strptime(request.form['date'], '%Y-%m-%d').strftime('%d/%m/%Y')
+        first_day_of_month = datetime(year, month, 1).strftime("%d/%b/%Y")
+        last_day_of_month = (datetime(year, month+1, 1) - timedelta(days=1)).strftime("%d/%b/%Y")
         place = request.form["place"]
         month_text = month_names[month]
 
@@ -48,12 +48,10 @@ def index():
         }
 
         # Modify BACID values
-        modified_bacid_data = {}
-        for code, bacid in bacid_data.items():
-            if bacid:
-                modified_bacid_data[code] = sol_id + bacid[4:]
-            else:
-                modified_bacid_data[code] = ''
+        modified_bacid_data = {
+            code: (sol_id + bacid[4:]) if bacid else ''
+            for code, bacid in bacid_data.items()
+            }
 
         return render_template("table.html", date=date, sol_id=sol_id, branch=branch,
                                region=region, place=place, month=month_text, year=year,
