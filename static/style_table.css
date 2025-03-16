@@ -119,6 +119,7 @@ td:nth-child(8) {
     font-size: 14px;
     background: #fafafa;
     border-bottom: 1px solid #ddd;
+    white-space: pre-line;
   }
 
   td:last-child {

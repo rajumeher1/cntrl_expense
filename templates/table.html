@@ -63,12 +63,22 @@
                             {% elif code == '1580' %} TELEPHONES OFFICE
                             {% endif %}
                         </td>
-                        <td data-label="Closing Balance 31/Mar/{{ prev_to_prev_year}}&nbsp;&nbsp;"><input type="number" step="any" name="{{ code }}_cb_prev_to_prev_year" required></td>
-                        <td data-label="Closing Balance 31/Mar/{{ prev_year }}&nbsp;&nbsp;"><input type="number" step="any" name="{{ code }}_cb_prev_year" required oninput="updatePercentage('{{ code }}')"></td>
-                        <td data-label="Opening Balance {{ first_day_of_month }}&nbsp;&nbsp;"><input type="number" step="any" name="{{ code }}_ob_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
-                        <td data-label="Closing Balance {{ last_day_of_month }}&nbsp;&nbsp;"><input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')"></td>
+                        <td data-label="Closing Balance&#10;31/Mar/{{ prev_to_prev_year }}" >
+                            <input type="number" step="any" name="{{ code }}_cb_prev_to_prev_year" required>
+                        </td>
+                        <td data-label="Closing Balance 31/Mar/{{ prev_year }}">
+                            <input type="number" step="any" name="{{ code }}_cb_prev_year" required oninput="updatePercentage('{{ code }}')">
+                        </td>
+                        <td data-label="Opening Balance {{ first_day_of_month }}">
+                            <input type="number" step="any" name="{{ code }}_ob_cur_month" required oninput="updatePercentage('{{ code }}')">
+                        </td>
+                        <td data-label="Closing Balance {{ last_day_of_month }}">
+                            <input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')">
+                        </td>
                         <td data-label="% Increase / Decrease" id="{{ code }}_percentage"></td>
-                        <td data-label="Justification"><input type="text" name="{{ code }}_justification" value="" disabled></td>
+                        <td data-label="Justification">
+                            <input type="text" name="{{ code }}_justification" value="" disabled>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
