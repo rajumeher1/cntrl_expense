@@ -132,6 +132,12 @@ td:nth-child(8) {
 
   td:last-child {
     border-bottom: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  td:last-child::before {
+    display: block;
   }
 
   td::before {
@@ -139,6 +145,7 @@ td:nth-child(8) {
     font-weight: bold;
     flex-basis: 40%;
   }
+
 
   /* Make Input Fields More Visible */
   input[type="number"],
