@@ -34,7 +34,7 @@
                         <th>Opening Balance<br>as on<br>{{ first_day_of_month }}</th>
                         <th>Closing Balance<br>as on<br>{{ last_day_of_month }}</th>
                         <th>% Increase / Decrease</th>
-                        <th>Justification</th>
+                        <th>Justification If Increase is more than 10%</th>
                     </tr>
                     <input type="hidden" name="region" value="{{ region }}">
                     <input type="hidden" name="month" value="{{ month }}">
@@ -76,7 +76,7 @@
                             <input type="number" step="any" name="{{ code }}_cb_cur_month" required oninput="updatePercentage('{{ code }}')">
                         </td>
                         <td data-label="% Increase / Decrease" id="{{ code }}_percentage"></td>
-                        <td data-label="Justification">
+                        <td data-label="Justification If Increase is more than 10%">
                             <input type="text" name="{{ code }}_justification" value="" disabled>
                         </td>
                     </tr>
